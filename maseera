@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maseera Holding - Empowering Financial Inclusion Through AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Adegoke';
+            src: url('https://fonts.cdnfonts.com/css/adegoke');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Brand Colors */
+            --primary-dark: #021B1E;
+            --primary-teal: #004C56;
+            --primary-beige: #FFE2CC;
+            --primary-green: #0C1B17;
+            --accent-beige: #F5D9C1;
+            
+            /* Supporting Colors */
+            --text-primary: #021B1E;
+            --text-secondary: #004C56;
+            --text-light: #6B7280;
+            --white: #FFFFFF;
+            --gray-100: #F9FAFB;
+            --gray-200: #F3F4F6;
+            --gray-300: #E5E7EB;
+            --gray-400: #D1D5DB;
+            --gray-500: #9CA3AF;
+            --gray-600: #6B7280;
+            --gray-700: #4B5563;
+            --gray-800: #374151;
+            --gray-900: #1F2937;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(2, 27, 30, 0.98) 0%, rgba(0, 76, 86, 0.98) 100%);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav.scrolled {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 5px 0;
+        }
+        
+        nav.scrolled .logo img {
+            height: 45px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-beige);
+            font-weight: 500;
+            font-size: 15px;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: var(--primary-beige);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-beige);
+            background: rgba(255, 226, 204, 0.1);
+        }
+        
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .nav-links a.active {
+            background: rgba(255, 226, 204, 0.15);
+            color: var(--primary-beige);
+        }
+        
+        .nav-cta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .language-toggle {
+            background: transparent;
+            border: 1px solid var(--primary-beige);
+            color: var(--primary-beige);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .language-toggle:hover {
+            background: var(--primary-beige);
+            color: var(--primary-dark);
+        }
+        
+        .nav-btn {
+            background: var(--primary-beige);
+            color: var(--primary-dark);
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: var(--accent-beige);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(245, 217, 193, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 226, 204, 0.3) 50%, rgba(0, 76, 86, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(245, 217, 193, 0.2) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            color: var(--primary-dark);
+            margin-bottom: 24px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary-teal);
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-features {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .hero-feature i {
+            color: var(--primary-teal);
+            font-size: 20px;
+        }
+        
+        .hero-feature span {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        /* Enhanced Button Styles */
+        .btn-primary {
+            background: var(--primary-teal);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-teal);
+            padding: 16px 32px;
+            border: 2px solid var(--primary-teal);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-teal);
+            color: var(--white);
+            box-shadow: 0 20px 25px -5px rgba(0, 76, 86, 0.2);
+        }
+        
+        /* CTA Buttons for Dark Background */
+        .cta .btn-primary {
+            background: var(--primary-beige);
+            color: var(--primary-dark);
+        }
+        
+        .cta .btn-primary:hover {
+            background: var(--accent-beige);
+            box-shadow: 0 20px 25px -5px rgba(245, 217, 193, 0.3);
+        }
+        
+        .cta .btn-secondary {
+            border-color: var(--primary-beige);
+            color: var(--primary-beige);
+        }
+        
+        .cta .btn-secondary:hover {
+            background: var(--primary-beige);
+            color: var(--primary-dark);
+        }
+        
+        .hero-image {
+            position: relative;
+            height: 600px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-stats {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            display: block;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-top: 4px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .section-label {
+            display: inline-block;
+            color: var(--primary-teal);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: clamp(36px, 4vw, 48px);
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+        }
+        
+        .about-list {
+            list-style: none;
+            margin-top: 32px;
+        }
+        
+        .about-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .about-list i {
+            color: var(--primary-teal);
+            font-size: 20px;
+            margin-top: 2px;
+        }
+        
+        .about-list span {
+            font-size: 16px;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        /* CASA Section */
+        .casa {
+            padding: 100px 0;
+            background: linear-gradient(180deg, rgba(245, 217, 193, 0.1) 0%, var(--white) 100%);
+            position: relative;
+        }
+        
+        .casa::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-teal) 0%, var(--primary-beige) 50%, var(--primary-dark) 100%);
+        }
+        
+        .casa-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        
+        .casa-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .casa-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-teal);
+        }
+        
+        .casa-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-beige);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        
+        .casa-icon i {
+            font-size: 28px;
+            color: var(--primary-teal);
+        }
+        
+        .casa-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .casa-card p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            position: relative;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(2, 27, 30, 0.9) 100%);
+            padding: 32px;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .service-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .service-link {
+            color: var(--primary-beige);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+        
+        .service-link:hover {
+            gap: 12px;
+        }
+        
+        /* Technology Section */
+        .technology {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .technology::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .ai-visualization {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.1;
+        }
+        
+        .ai-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-beige);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(2); opacity: 1; }
+        }
+        
+        .ai-connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-beige), transparent);
+            animation: flow 3s linear infinite;
+        }
+        
+        @keyframes flow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .technology .section-header {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .technology .section-label {
+            color: var(--primary-beige);
+        }
+        
+        .technology .section-title {
+            color: white;
+        }
+        
+        .technology .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tech-features {
+            display: grid;
+            gap: 32px;
+        }
+        
+        .tech-feature {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .tech-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .tech-icon i {
+            font-size: 24px;
+            color: var(--primary-beige);
+        }
+        
+        .tech-text h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .tech-text p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        .tech-image {
+            position: relative;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .tech-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .tech-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(2, 27, 30, 0.8) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 32px;
+        }
+        
+        .tech-overlay-content {
+            color: white;
+        }
+        
+        .tech-overlay-content h4 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .tech-overlay-content p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Markets Section */
+        .markets {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--white) 0%, rgba(0, 76, 86, 0.05) 100%);
+        }
+        
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .market-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .market-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .market-flag {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .market-content {
+            padding: 32px;
+        }
+        
+        .market-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .market-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .market-stat {
+            text-align: center;
+        }
+        
+        .market-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-teal);
+            display: block;
+        }
+        
+        .market-stat-label {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-top: 4px;
+        }
+        
+        /* Impact Section */
+        .impact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(255, 226, 204, 0.1) 0%, var(--white) 100%);
+            position: relative;
+        }
+        
+        .impact::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-beige) 0%, var(--primary-teal) 50%, var(--primary-dark) 100%);
+        }
+        
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .impact-metric {
+            text-align: center;
+            padding: 32px;
+            background: var(--gray-100);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .impact-metric:hover {
+            background: var(--primary-beige);
+            transform: translateY(-4px);
+        }
+        
+        .impact-metric i {
+            font-size: 48px;
+            color: var(--primary-teal);
+            margin-bottom: 20px;
+        }
+        
+        .impact-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .impact-label {
+            font-size: 16px;
+            color: var(--gray-600);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 217, 193, 0.1) 0%, transparent 60%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: clamp(36px, 4vw, 48px);
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            padding: 80px 0 40px;
+            color: white;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand img {
+            height: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-brand p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 24px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-teal);
+            transform: translateY(-3px);
+        }
+        
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-bottom p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+            align-items: start;
+        }
+        
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .contact-info p {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-beige);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon i {
+            font-size: 20px;
+            color: var(--primary-teal);
+        }
+        
+        .contact-text h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        
+        .contact-text p {
+            font-size: 15px;
+            color: var(--gray-600);
+            margin: 0;
+        }
+        
+        .contact-form {
+            background: var(--gray-100);
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 3px rgba(0, 76, 86, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .form-submit {
+            background: var(--primary-teal);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .form-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-dark) 100%);
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter h3 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        
+        .newsletter p {
+            font-size: 16px;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-beige);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .newsletter-button {
+            padding: 14px 32px;
+            background: var(--primary-beige);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .newsletter-button:hover {
+            background: var(--accent-beige);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Mobile Menu Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                gap: 16px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 12px 16px;
+                border-radius: 8px;
+                transition: background 0.3s ease;
+            }
+            
+            .nav-links a:hover {
+                background: var(--gray-100);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-form {
+                padding: 32px 24px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Accessibility Focus Styles */
+        a:focus,
+        button:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 3px solid var(--primary-teal);
+            outline-offset: 2px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav,
+            .hero-buttons,
+            .newsletter,
+            .footer-social,
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.5;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-image {
+                height: 400px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .casa-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .markets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons a {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .casa-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* RTL Support */
+        [dir="rtl"] {
+            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+        }
+        
+        [dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .about-list li,
+        [dir="rtl"] .tech-feature {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .service-link i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#technology">Technology</a>
+                    <a href="#markets">Markets</a>
+                    <a href="#impact">Impact</a>
+                </div>
+                <div class="nav-cta">
+                    <button class="language-toggle">العربية</button>
+                    <a href="#contact" class="nav-btn">Get Started</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Empowering Financial Inclusion Through <span>AI Innovation</span></h1>
+                    <p>Maseera Holding transforms financial services for underserved communities across emerging markets with cutting-edge AI technology and a commitment to accessibility.</p>
+                    
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>AI-Powered Solutions</span>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>$1 Billion Investment</span>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>3 Key Markets</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn-primary">
+                            Explore Our Solutions
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            Partner With Us
+                            <i class="fas fa-handshake"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Financial Data Analytics Dashboard">
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">$1B</span>
+                            <span class="stat-label">Investment Backing</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2M+</span>
+                            <span class="stat-label">Target Users</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">About Maseera</span>
+                <h2 class="section-title">Building Tomorrow's Financial Infrastructure</h2>
+                <p class="section-subtitle">A digital-first financial services provider committed to empowering underserved communities through innovative technology and empathy-driven solutions.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Professional team collaborating">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Empathy at Our Core</h3>
+                    <p>At Maseera, we believe that empathy is key to innovation, and transparency is the cornerstone of credibility. By always standing on the clients' side, we ensure that our services truly meet the needs of those we serve.</p>
+                    <p>As a digital marketplace FSP, we provide comprehensive financial services for low and middle-income individuals and MSMEs, making financial inclusion a reality for millions across emerging markets.</p>
+                    
+                    <ul class="about-list">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>AI-powered credit scoring and risk assessment</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Digital-first approach for seamless user experience</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Comprehensive financial services ecosystem</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            <span>Strategic partnerships across emerging markets</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASA Principles Section -->
+    <section class="casa" id="principles">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Core Principles</span>
+                <h2 class="section-title">CASA: The Foundation of Everything We Do</h2>
+                <p class="section-subtitle">Four principles that guide our approach to financial inclusion</p>
+            </div>
+            
+            <div class="casa-grid">
+                <div class="casa-card">
+                    <div class="casa-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Convenience</h3>
+                    <p>24/7 digital access to financial services through intuitive mobile and web platforms</p>
+                </div>
+                
+                <div class="casa-card">
+                    <div class="casa-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Affordability</h3>
+                    <p>Competitive rates and transparent pricing that makes financial services accessible to all</p>
+                </div>
+                
+                <div class="casa-card">
+                    <div class="casa-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Speed</h3>
+                    <p>Instant approvals and real-time processing powered by advanced AI algorithms</p>
+                </div>
+                
+                <div class="casa-card">
+                    <div class="casa-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Accessibility</h3>
+                    <p>Multilingual support and minimal requirements to ensure no one is left behind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">Comprehensive Financial Solutions</h2>
+                <p class="section-subtitle">Tailored services designed to meet the diverse needs of individuals and businesses</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Digital Banking" class="service-image">
+                    <div class="service-overlay">
+                        <h3>Digital Banking</h3>
+                        <p>Full-service digital banking solutions with savings, payments, and money transfers</p>
+                        <a href="#" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Microfinance" class="service-image">
+                    <div class="service-overlay">
+                        <h3>Microfinance</h3>
+                        <p>Small loans and credit facilities designed for individuals and micro-enterprises</p>
+                        <a href="#" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="SME Services" class="service-image">
+                    <div class="service-overlay">
+                        <h3>SME Services</h3>
+                        <p>Comprehensive financial tools and credit solutions for small and medium enterprises</p>
+                        <a href="#" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology" id="technology">
+        <div class="ai-visualization">
+            <div class="ai-node" style="top: 10%; left: 20%;"></div>
+            <div class="ai-node" style="top: 30%; left: 80%; animation-delay: 0.5s;"></div>
+            <div class="ai-node" style="top: 60%; left: 10%; animation-delay: 1s;"></div>
+            <div class="ai-node" style="top: 80%; left: 70%; animation-delay: 1.5s;"></div>
+            <div class="ai-connection" style="top: 20%; width: 60%; left: 20%;"></div>
+            <div class="ai-connection" style="top: 50%; width: 80%; left: 10%; animation-delay: 1s;"></div>
+            <div class="ai-connection" style="top: 70%; width: 50%; left: 35%; animation-delay: 2s;"></div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Innovation & Technology</span>
+                <h2 class="section-title">AI-Powered Financial Intelligence</h2>
+                <p class="section-subtitle">Leveraging cutting-edge technology to deliver smarter, faster, and more inclusive financial services</p>
+            </div>
+            
+            <div class="tech-content">
+                <div class="tech-features">
+                    <div class="tech-feature">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="tech-text">
+                            <h4>Machine Learning Models</h4>
+                            <p>Advanced algorithms for accurate credit scoring, fraud detection, and personalized financial recommendations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="tech-text">
+                            <h4>AI-Powered Automation</h4>
+                            <p>Intelligent process automation reducing approval times from days to minutes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="tech-text">
+                            <h4>Neural Networks</h4>
+                            <p>Deep learning systems that continuously improve risk assessment and customer insights</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="tech-text">
+                            <h4>Edge Computing</h4>
+                            <p>Real-time processing capabilities ensuring instant decisions even in low-connectivity areas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Technology Visualization">
+                    <div class="tech-overlay">
+                        <div class="tech-overlay-content">
+                            <h4>Powered by Advanced AI</h4>
+                            <p>Our proprietary AI engine processes millions of data points to deliver personalized financial solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Technology Infrastructure">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Markets Section -->
+    <section class="markets" id="markets">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Markets</span>
+                <h2 class="section-title">Strategic Presence Across Emerging Markets</h2>
+                <p class="section-subtitle">Focusing on high-growth regions with significant opportunities for financial inclusion</p>
+            </div>
+            
+            <div class="markets-grid">
+                <div class="market-card">
+                    <img src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Egypt Market" class="market-flag">
+                    <div class="market-content">
+                        <h3>Egypt</h3>
+                        <p>Serving the largest Arab economy with innovative digital financial solutions tailored to local needs.</p>
+                        <div class="market-stats">
+                            <div class="market-stat">
+                                <span class="market-stat-value">105M</span>
+                                <span class="market-stat-label">Population</span>
+                            </div>
+                            <div class="market-stat">
+                                <span class="market-stat-value">67%</span>
+                                <span class="market-stat-label">Unbanked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="market-card">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="India Market" class="market-flag">
+                    <div class="market-content">
+                        <h3>India</h3>
+                        <p>Tapping into the world's largest democracy with scalable fintech solutions for diverse communities.</p>
+                        <div class="market-stats">
+                            <div class="market-stat">
+                                <span class="market-stat-value">1.4B</span>
+                                <span class="market-stat-label">Population</span>
+                            </div>
+                            <div class="market-stat">
+                                <span class="market-stat-value">20%</span>
+                                <span class="market-stat-label">Unbanked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="market-card">
+                    <img src="https://images.unsplash.com/photo-1614613158067-5c7e86de9ff7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pakistan - Badshahi Mosque" class="market-flag">
+                    <div class="market-content">
+                        <h3>Pakistan</h3>
+                        <p>Empowering one of the fastest-growing economies with accessible financial services.</p>
+                        <div class="market-stats">
+                            <div class="market-stat">
+                                <span class="market-stat-value">230M</span>
+                                <span class="market-stat-label">Population</span>
+                            </div>
+                            <div class="market-stat">
+                                <span class="market-stat-value">79%</span>
+                                <span class="market-stat-label">Unbanked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Impact</span>
+                <h2 class="section-title">Driving Meaningful Change</h2>
+                <p class="section-subtitle">Measuring our success through the positive impact on communities and economies</p>
+            </div>
+            
+            <div class="impact-metrics">
+                <div class="impact-metric">
+                    <i class="fas fa-users"></i>
+                    <span class="impact-value">2M+</span>
+                    <span class="impact-label">Target Users</span>
+                </div>
+                
+                <div class="impact-metric">
+                    <i class="fas fa-building"></i>
+                    <span class="impact-value">50K+</span>
+                    <span class="impact-label">SMEs Supported</span>
+                </div>
+                
+                <div class="impact-metric">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span class="impact-value">$500M</span>
+                    <span class="impact-label">Credit Facility</span>
+                </div>
+                
+                <div class="impact-metric">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="impact-value">85%</span>
+                    <span class="impact-label">Financial Inclusion</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Financial Services Together?</h2>
+                <p>Join us in our mission to empower communities and drive financial inclusion across emerging markets.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-primary">
+                        Become a Partner
+                        <i class="fas fa-handshake"></i>
+                    </a>
+                    <a href="#" class="btn-secondary">
+                        Download Brochure
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Start Your Financial Journey Today</h2>
+                <p class="section-subtitle">Connect with our team to explore partnership opportunities or learn more about our services</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Build the Future of Finance Together</h3>
+                    <p>Whether you're an individual seeking financial services, a business looking for growth capital, or a potential partner interested in collaboration, we're here to help.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Headquarters</h4>
+                                <p>Abu Dhabi, United Arab Emirates</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email Us</h4>
+                                <p>info@maseeraholding.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Call Us</h4>
+                                <p>+971 2 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Business Hours</h4>
+                                <p>Sunday - Thursday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="services">Services Information</option>
+                                <option value="investment">Investment Opportunities</option>
+                                <option value="careers">Career Opportunities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Stay Updated with Maseera</h3>
+                <p>Get the latest news, insights, and updates on financial inclusion and our services</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="https://i.postimg.cc/sx93BKWv/Maseera-Logo-RGB.png" alt="Maseera Logo" style="filter: brightness(0) invert(1);">
+                    <p>Transforming financial services through AI-powered solutions for emerging markets. Building a more inclusive financial future for all.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Room</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Digital Banking</a></li>
+                        <li><a href="#">Microfinance</a></li>
+                        <li><a href="#">SME Services</a></li>
+                        <li><a href="#">AI Platform</a></li>
+                        <li><a href="#">APIs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Developer Portal</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Maseera Holding. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Language toggle
+        document.querySelector('.language-toggle').addEventListener('click', function() {
+            const isRTL = document.dir === 'rtl';
+            document.dir = isRTL ? 'ltr' : 'rtl';
+            this.textContent = isRTL ? 'العربية' : 'English';
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('.form-submit');
+            const originalText = button.textContent;
+            button.innerHTML = '<span class="loading-spinner"></span> Sending...';
+            button.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                button.textContent = 'Message Sent!';
+                button.style.background = '#10B981';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Newsletter form
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('.newsletter-button');
+            const input = this.querySelector('.newsletter-input');
+            const originalText = button.textContent;
+            
+            button.innerHTML = '<span class="loading-spinner"></span>';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Subscribed!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    input.value = '';
+                }, 2000);
+            }, 1000);
+        });
+
+        // Generate AI visualization nodes
+        function generateAINodes() {
+            const aiViz = document.querySelector('.ai-visualization');
+            if (aiViz) {
+                // Add more dynamic nodes
+                for (let i = 0; i < 20; i++) {
+                    const node = document.createElement('div');
+                    node.className = 'ai-node';
+                    node.style.top = Math.random() * 100 + '%';
+                    node.style.left = Math.random() * 100 + '%';
+                    node.style.animationDelay = Math.random() * 3 + 's';
+                    node.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    aiViz.appendChild(node);
+                }
+                
+                // Add more connections
+                for (let i = 0; i < 10; i++) {
+                    const connection = document.createElement('div');
+                    connection.className = 'ai-connection';
+                    connection.style.top = Math.random() * 100 + '%';
+                    connection.style.width = (30 + Math.random() * 40) + '%';
+                    connection.style.left = Math.random() * 60 + '%';
+                    connection.style.animationDelay = Math.random() * 3 + 's';
+                    connection.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    aiViz.appendChild(connection);
+                }
+            }
+        }
+        
+        generateAINodes();
+        
+        // Enhanced parallax effects
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            
+            // Hero parallax
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage && scrolled < 800) {
+                heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            // AI visualization parallax
+            const aiNodes = document.querySelectorAll('.ai-node');
+            aiNodes.forEach((node, index) => {
+                if (scrolled > 1500 && scrolled < 3000) {
+                    const speed = 0.5 + (index % 3) * 0.2;
+                    node.style.transform = `translateY(${(scrolled - 1500) * speed * 0.1}px)`;
+                }
+            });
+        });
+        
+        // Add hover effect to market cards
+        document.querySelectorAll('.market-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add active state to navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+        function updateActiveLink() {
+            const scrollY = window.pageYOffset;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
+
+        // Number counter animation
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number, .impact-value');
+            
+            numbers.forEach(number => {
+                const target = number.textContent;
+                const isPercentage = target.includes('%');
+                const isDollar = target.includes('
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animations
+        document.querySelectorAll('.casa-card, .service-card, .market-card, .impact-metric').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>logo">
+                    <img src="https://i.postimg.cc/HxV2PYbd/Maseera-logo-high-res-1.png" alt="Maseera Logo">
+                </div>
+                <div class=");
+                const hasPlus = target.includes('+');
+                const hasText = isNaN(parseInt(target));
+                
+                if (!hasText || isDollar || isPercentage) {
+                    let finalNumber = parseInt(target.replace(/[^0-9]/g, ''));
+                    let current = 0;
+                    const increment = finalNumber / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= finalNumber) {
+                            current = finalNumber;
+                            clearInterval(timer);
+                        }
+                        
+                        let display = Math.floor(current);
+                        if (isDollar) display = '
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animations
+        document.querySelectorAll('.casa-card, .service-card, .market-card, .impact-metric').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>logo">
+                    <img src="https://i.postimg.cc/HxV2PYbd/Maseera-logo-high-res-1.png" alt="Maseera Logo">
+                </div>
+                <div class=" + display;
+                        if (isPercentage) display = display + '%';
+                        if (hasPlus) display = display + '+';
+                        if (target.includes('B')) display = display + 'B';
+                        if (target.includes('M')) display = display + 'M';
+                        if (target.includes('K')) display = display + 'K';
+                        
+                        number.textContent = display;
+                    }, 30);
+                }
+            });
+        }
+
+        // Trigger number animation when stats are visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) statsObserver.observe(heroStats);
+
+        const impactMetrics = document.querySelector('.impact-metrics');
+        if (impactMetrics) statsObserver.observe(impactMetrics);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animations
+        document.querySelectorAll('.casa-card, .service-card, .market-card, .impact-metric').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
